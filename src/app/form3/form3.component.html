@@ -1,0 +1,38 @@
+<form class="container border border-primary m-3 p-3" [formGroup]="reactiveForm" (ngSubmit)="onSubmit()">
+  <div class="mb-3">
+    <label for="exampleInputEmail1" class="form-label">Email address</label>
+    <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"
+    formControlName="email">
+   <div *ngIf="reactiveForm.get('email')?.invalid &&  reactiveForm.get('email')?.dirty">
+
+       <div id="emailHelp" class="form-text text-danger" 
+       *ngIf="reactiveForm.get('email')?.hasError('required')" >Email Address is requred.</div>
+
+       <div id="emailHelp" class="form-text text-danger"
+       *ngIf="reactiveForm.get('email')?.hasError('email')" >Email Address is invalid.</div>
+
+   </div>
+    
+  </div>
+  <div class="mb-3">
+    <label for="exampleInputPassword1" class="form-label">Password</label>
+    <input type="password" class="form-control" id="exampleInputPassword1" formControlName="password">
+
+     <div *ngIf="reactiveForm.get('password')?.invalid &&  reactiveForm.get('password')?.dirty">
+
+       <div id="emailHelp" class="form-text text-danger" 
+       *ngIf="reactiveForm.get('password')?.hasError('required')" >Password is required.</div>
+
+       <div id="emailHelp" class="form-text text-danger"
+       *ngIf="reactiveForm.get('password')?.hasError('minlength')" >Password is too short</div>
+
+   </div>
+  </div>
+
+   <div class="mb-3">
+    <label for="exampleInputPassword1" class="form-label">age</label>
+    <input type="number" class="form-control" id="exampleInputPassword1" formControlName="age">
+  </div>
+  
+  <button type="submit" class="btn btn-primary">Submit</button>
+</form>
